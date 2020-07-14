@@ -30,6 +30,10 @@ public class PolicyHandler{
             SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
             String today = defaultSimpleDateFormat.format(new Date());
             installationAccept.setInstallReservationDate(today);
+            installationAccept.setEngineerId(orderAccepted.getEngineerId());
+            installationAccept.setEngineerName(orderAccepted.getEngineerName());
+            installationAccept.setOrderId(orderAccepted.getOrderId());
+
             installationRepository.save(installationAccept);
             System.out.println("##### listener InstallationRequest : " + orderAccepted.toJson());
         }
