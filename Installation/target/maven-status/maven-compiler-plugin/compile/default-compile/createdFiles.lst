@@ -1,0 +1,12 @@
+ipTVShopProject\InstallationRepository.class
+ipTVShopProject\InstallationAccepted.class
+ipTVShopProject\InstallationController.class
+ipTVShopProject\InstallationApplication.class
+ipTVShopProject\OrderAccepted.class
+ipTVShopProject\AbstractEvent$1.class
+ipTVShopProject\InstallationCanceled.class
+ipTVShopProject\InstallationCompleted.class
+ipTVShopProject\AbstractEvent.class
+ipTVShopProject\config\kafka\KafkaProcessor.class
+ipTVShopProject\Installation.class
+ipTVShopProject\PolicyHandler.class
