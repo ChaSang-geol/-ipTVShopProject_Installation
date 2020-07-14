@@ -18,22 +18,26 @@ import java.util.List;
   public String installationCancellation(@RequestBody Installation installation) {
 
    Installation installationCancel = installationRepository.findByOrderId(installation.getOrderId());
-   if (installationCancel.getStatus() == "INSTALLCOMPLETED") {
-    return "NotAccepted";
-   } else {
-    return "Accepted";
+
+   if (installationCancel.getStatus().equals("INSTALLCOMPLETED")) {
+       return "NotAccepted";
+   }
+   else {
+       installationCancel.setStatus("INSTALLATIONCANCELED");
+       installationRepository.save(installationCancel);
+       return "Accepted";
    }
   }
 
    @RequestMapping(method=RequestMethod.PATCH, path="/installations")
    public void installationCompletion(@RequestParam (value="orderId", required=false, defaultValue="0") Long orderId) {
 
-    Installation installationCompl = installationRepository.findByOrderId(orderId);
-    installationCompl.setStatus("INSTALLCOMPLETED");
-    SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
-    String today = defaultSimpleDateFormat.format(new Date());
-    installationCompl.setInstallCompleteDate(today);
-    installationRepository.save(installationCompl);
+       Installation installationCompl = installationRepository.findByOrderId(orderId);
+       installationCompl.setStatus("INSTALLCOMPLETED");
+       SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
+       String today = defaultSimpleDateFormat.format(new Date());
+       installationCompl.setInstallCompleteDate(today);
+       installationRepository.save(installationCompl);
 
    }
 
