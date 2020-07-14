@@ -14,9 +14,14 @@ import java.util.List;
   @Autowired
   InstallationRepository installationRepository;
 
-  @RequestMapping(method=RequestMethod.GET, path="/installations")
-  public String installationCancellation(@RequestBody Installation installation) {
+  @RequestMapping(method=RequestMethod.GET, path="/installations/orderID")
+  public String installationCancellation(@RequestParam("id") String orderId) {
 
+      System.out.println("TEST2");
+
+      return "SUCCESS";
+
+      /*
    Installation installationCancel = installationRepository.findByOrderId(installation.getOrderId());
 
    if (installationCancel.getStatus().equals("INSTALLCOMPLETED")) {
@@ -26,7 +31,7 @@ import java.util.List;
        installationCancel.setStatus("INSTALLATIONCANCELED");
        installationRepository.save(installationCancel);
        return "Accepted";
-   }
+   }*/
   }
 
    @RequestMapping(method=RequestMethod.PATCH, path="/installations")
